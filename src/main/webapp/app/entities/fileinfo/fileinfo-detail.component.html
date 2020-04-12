@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="fileinfo">
+            <h2><span>Fileinfo</span> {{fileinfo.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>File</span></dt>
+                <dd>
+                    <div *ngIf="fileinfo.file">
+                        <a (click)="openFile(fileinfo.fileContentType!, fileinfo.file)">open</a>
+                        {{fileinfo.fileContentType}}, {{byteSize(fileinfo.file)}}
+                    </div>
+                </dd>
+                <dt><span>Uploaddate</span></dt>
+                <dd>
+                    <span>{{fileinfo.uploaddate}}</span>
+                </dd>
+                <dt><span>Notes</span></dt>
+                <dd>
+                    <span>{{fileinfo.notes}}</span>
+                </dd>
+                <dt><span>Filetype</span></dt>
+                <dd>
+                    <span>{{fileinfo.filetype}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/fileinfo', fileinfo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
